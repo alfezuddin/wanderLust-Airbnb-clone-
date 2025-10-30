@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 const Review = require("./Review.js");
 
@@ -9,37 +8,34 @@ const listingSchema = new Schema({
     required: true,
   },
   description: String,
-  image:{
+  image: {
     url: String,
     filename: String,
   },
   price: Number,
   location: String,
   country: String,
-  // review ko ham array ki form me rakhenge
-  reviews : [
-    {
-    type : mongoose.Schema.Types.ObjectId,
-    ref : "Review"
 
-    }
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
+    },
   ],
-  owner:[ {   // jo listing jisne create ki ho vo uss ko hi delete edit kar sakta hai VO OWNER hoga
-    type : mongoose.Schema.Types.ObjectId,
+
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required : true,
-  }],
+    required: true, // ✅ har listing ka ek owner hoga
+  },
 });
 
-
-listingSchema.post("findOneAndDelete", async(listing) => {
-  if(listing){
-
-    await Review.deleteMany({_id : {$in: listing.reviews}});
+// ✅ Jab listing delete ho to uske saare reviews bhi delete ho jayein
+listingSchema.post("findOneAndDelete", async (listing) => {
+  if (listing) {
+    await Review.deleteMany({ _id: { $in: listing.reviews } });
   }
-})
-
+});
 
 const Listing = mongoose.model("Listing", listingSchema);
-
 module.exports = Listing;

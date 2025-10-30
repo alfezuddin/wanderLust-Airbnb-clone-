@@ -27,7 +27,7 @@ router.post(
         res.redirect("/listings");
       })
     } catch (e) {
-      // console.error("Signup error:", e.message);s
+      
       req.flash("error", e.message);
       res.redirect("/signup");
     }
