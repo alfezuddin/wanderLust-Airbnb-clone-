@@ -14,7 +14,6 @@ body {
 }
 
 /* navbar */
-
 .navbar {
   height: 5rem;
   background-color: white;
@@ -30,7 +29,6 @@ body {
 }
 
 /* footer */
-
 .f-info-links a {
   text-decoration: none;
   color: #222222 !important;
@@ -66,7 +64,6 @@ body {
 }
 
 /* cards */
-
 .listing-card {
   border: none !important;
   margin-bottom: 2rem;
@@ -90,7 +87,7 @@ body {
   text-decoration: none !important;
 }
 
-/* card effect */
+/* card hover effect */
 .card-img-overlay {
   opacity: 0;
 }
@@ -101,9 +98,10 @@ body {
 }
 
 /* show page */
-
 .show-img {
   height: 30vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 .btns {
@@ -115,25 +113,64 @@ body {
   padding-right: 0;
 }
 
-
-/* search bar */
-/* .search-btn{
-  background-color: #fe424d;
-  color: white;
-  border-radius: 25px;
-  padding: 0 1rem 0 1rem;
-}
-.search-btn:hover{
-  background-color: #fe424d;
-  color: white;
+/* ==================== */
+/* ✅ Review Section CSS */
+/* ==================== */
+.review-section {
+  margin-top: 20px;
 }
 
-.search-btn i {
-  display: inline;
-  margin-right: 0.5rem;
+.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
-.search-inp{
-  border-radius: 25px;
-  padding: 0.5rem 3rem 0.5rem 3rem;
-} */
 
+.review-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  width: 260px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-author {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.fa-star {
+  font-size: 20px;
+  color: #ccc;
+}
+
+.fa-star.filled {
+  color: gold;
+}
+
+.review-comment {
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .review-card {
+    width: 90%;
+  }
+
+  .fa-star {
+    font-size: 18px;
+  }
+}
